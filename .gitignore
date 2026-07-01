@@ -5,3 +5,4 @@ obj/
 local.settings.json
 *.user
 .vs/
+.claude/

@@ -25,8 +25,10 @@ export interface ContainerSasResponse {
   expiresAt: string;
 }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "";
+
 export async function requestUpload(guestId: string, fileName: string): Promise<RequestUploadResponse> {
-  const res = await fetch("/api/photos/request-upload", {
+  const res = await fetch(`${API_BASE_URL}/api/photos/request-upload`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ guestId, fileName })
@@ -49,7 +51,7 @@ export async function uploadToBlob(uploadUrl: string, file: File): Promise<void>
 }
 
 export async function confirmUpload(guestId: string, blobName: string): Promise<ConfirmUploadResponse> {
-  const res = await fetch("/api/photos/confirm-upload", {
+  const res = await fetch(`${API_BASE_URL}/api/photos/confirm-upload`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ guestId, blobName })
@@ -62,7 +64,7 @@ function authHeader(username: string, password: string): string {
 }
 
 export async function fetchAdminPhotos(username: string, password: string): Promise<PhotoInfo[]> {
-  const res = await fetch("/api/admin/photos", {
+  const res = await fetch(`${API_BASE_URL}/api/admin/photos`, {
     headers: { Authorization: authHeader(username, password) }
   });
   if (!res.ok) {
@@ -72,7 +74,7 @@ export async function fetchAdminPhotos(username: string, password: string): Prom
 }
 
 export async function fetchContainerSas(username: string, password: string): Promise<ContainerSasResponse> {
-  const res = await fetch("/api/admin/container-sas", {
+  const res = await fetch(`${API_BASE_URL}/api/admin/container-sas`, {
     headers: { Authorization: authHeader(username, password) }
   });
   if (!res.ok) {

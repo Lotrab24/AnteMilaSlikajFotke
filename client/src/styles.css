@@ -1,0 +1,100 @@
+:root {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2f2a;
+}
+
+body {
+  margin: 0;
+  background: #faf6f1;
+}
+
+.home {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.home h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.uploader {
+  margin-top: 2rem;
+}
+
+.uploader__counter {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.uploader__button {
+  background: #b08968;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.uploader__button:disabled {
+  background: #cbbdae;
+  cursor: not-allowed;
+}
+
+.uploader__message {
+  margin-top: 1rem;
+}
+
+.uploader__message--error {
+  color: #b3261e;
+}
+
+.uploader__message--success {
+  color: #2e7d32;
+}
+
+.admin {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.admin--login {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin__error {
+  color: #b3261e;
+}
+
+.admin__download {
+  margin: 1.5rem 0;
+}
+
+.admin__sas code {
+  display: block;
+  background: #eee;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  word-break: break-all;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.photo-grid__item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}

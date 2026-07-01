@@ -64,7 +64,7 @@ function authHeader(username: string, password: string): string {
 }
 
 export async function fetchAdminPhotos(username: string, password: string): Promise<PhotoInfo[]> {
-  const res = await fetch(`${API_BASE_URL}/api/admin/photos`, {
+  const res = await fetch(`${API_BASE_URL}/api/gallery/photos`, {
     headers: { Authorization: authHeader(username, password) }
   });
   if (!res.ok) {
@@ -74,7 +74,7 @@ export async function fetchAdminPhotos(username: string, password: string): Prom
 }
 
 export async function fetchContainerSas(username: string, password: string): Promise<ContainerSasResponse> {
-  const res = await fetch(`${API_BASE_URL}/api/admin/container-sas`, {
+  const res = await fetch(`${API_BASE_URL}/api/gallery/download-info`, {
     headers: { Authorization: authHeader(username, password) }
   });
   if (!res.ok) {

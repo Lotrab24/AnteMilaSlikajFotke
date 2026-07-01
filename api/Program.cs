@@ -1,3 +1,5 @@
+using System.Text.Json;
+using Azure.Core.Serialization;
 using Azure.Data.Tables;
 using Azure.Storage.Blobs;
 using Microsoft.Azure.Functions.Worker;
@@ -15,6 +17,11 @@ var host = new HostBuilder()
         services.AddSingleton(new BlobServiceClient(storageConnectionString));
         services.AddSingleton(new TableServiceClient(storageConnectionString));
         services.AddSingleton<PhotoStorageService>();
+
+        services.Configure<WorkerOptions>(workerOptions =>
+        {
+            workerOptions.Serializer = new JsonObjectSerializer(new JsonSerializerOptions(JsonSerializerDefaults.Web));
+        });
     })
     .Build();
 
